@@ -14,7 +14,7 @@
 void idle_func()
 {
 	//uncomment below to repeatedly draw new frames
-	//glutPostRedisplay();
+	glutPostRedisplay();
 }
 
 void reshape_func( int width, int height )
@@ -139,10 +139,10 @@ int main( int argc, char** argv )
 	glutInit( &argc, argv );
 
 	glutInitWindowPosition( 100, 100 );
-	glutInitWindowSize( 800, 600 );
+	glutInitWindowSize( 1920, 1080 );
 	glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH );
 
-	glutCreateWindow( "Basic OpenGL Example" );
+	glutCreateWindow( "i shidded in my pants" );
 
 	glutDisplayFunc( display_func );
 	glutIdleFunc( idle_func );

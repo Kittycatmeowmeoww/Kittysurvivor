@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.20348.0/um", 
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.20348.0/shared", 
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.20348.0/ucrt", 
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.20348.0/winrt" 
+            ],
+            "defines": ["_WIN32"],
+            "intelliSenseMode": "${default}",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "windowsSdkVersion": "10.0.20348.0",
+            "compilerPath": "${env:ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/{msvcVersion}/bin/Hostx64/x64/cl.exe",
+            "compilerArgs": [
+                "/MDd"
+            ]
+        }
+    ],
+    "version": 4
+}
