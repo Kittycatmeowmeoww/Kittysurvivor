@@ -91,13 +91,13 @@ void display_func( void )
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
 	glBegin( GL_LINES );
-		glColor3f( 1.0f, 0.0f, 0.0f );
+		glColor3f( 1.0f, 1.0f, 1.0f );
 		glVertex2f( -0.5f, 0.0f );
 		glColor3f( 0.0f, 1.0f, 0.0f );
 		glVertex2f( 0.5f, 0.0f );
 	glEnd();
 
-	glColor3f( 0.0f, 0.0f, 1.0f );
+	glColor3f( 0.0f, 0.3f, 0.2f );
 	glBegin( GL_LINES );
 		glVertex2f( 0.0f, -0.5f );
 		glVertex2f( 0.0f, 0.5f );
@@ -105,9 +105,9 @@ void display_func( void )
 
 	glColor3f( 1.0f, 1.0f, 1.0f );
 	glBegin( GL_TRIANGLES );
-		glVertex2f( 0.1f, 0.1f );
+		glVertex2f( 0.1f, 0.6f );
 		glVertex2f( 0.4f, 0.1f );
-		glVertex2f( 0.25f, 0.4f );
+		glVertex2f( 1.265f, 2.46 );
 	glEnd();
 
 	glutSwapBuffers();
