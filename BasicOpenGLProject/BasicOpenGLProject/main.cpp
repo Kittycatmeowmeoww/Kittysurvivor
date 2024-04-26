@@ -192,7 +192,7 @@ void init( void )
 	player.vmax = MAX_VELO_PLAYER;
 	player.vmax2 = MAX_VELO_PLAYER * MAX_VELO_PLAYER;
 	std::cout << "Dont forget to like and subscribe.\n";
-	std::cout << "Kittycat made by Sergio Angulo, Elvis Presley\n";
+	std::cout << "Kittycat\n";
 	std::cout << "Finished initializing...\n\n";
 }
 
