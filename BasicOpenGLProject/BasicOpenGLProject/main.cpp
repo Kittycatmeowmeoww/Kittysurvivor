@@ -16,72 +16,13 @@
 /* � type definitions ������������������ */
 float posX = 0, posY = 0;
 float move_unit = 0.1f;
-typedef struct {
-	int width;
-	int height;
-	char* title;
-
-	float field_of_view_angle;
-	float z_near;
-	float z_far;
-} glutWindow;
 
 
 
-typedef struct {
-	double  x, y, phi, dx, dy, vmax, vmax2, radius;
-} Player;
-/* � function prototypes ����������������� */
-
-static void initialize();
-
-// Keyboard
-void keyboard(unsigned char, int, int);
-void keyPress(int, int, int);
-void keyRelease(int, int, int);
 
 
-// Player
-void drawPlayer(Player* p);
-void movePlayer();
-void checkMapBoundries();
-
-// Display
-void display();
-void myReshape(int, int);
-
-void setWindowValues();
-/* � global variables ������������������ */
-
-static glutWindow win;
-
-// State of cursor keys
-static int up = 0;
-static int down = 0;
-static int left = 0;
-static int right = 0;
-
-static double x2;
-static double y2;
-static Player player;
 
 
-void drawPlayer(Player* p) {
-
-	glLineWidth(1.5);
-	glEnable(GL_LINE_SMOOTH);
-	glColor3f(0.2f, 0.9f, 1.0f);
-	glPushMatrix();
-		myTranslate2D(p->x, p->y);
-		myScale2D(5, 5);
-	/* Starting position */
-	glBegin(GL_TRIANGLES);
-		glVertex3f(0.0f, 2.0f, 0.0f);   // Top
-		glVertex3f(-1.0f, -1.0f, 0.0f);   // Bottom Left
-		glVertex3f(1.0f, -1.0f, 0.0f);   // Bottom Right
-	glEnd();
-	glPopMatrix();
-}
 
 void idle_func()
 {
@@ -138,19 +79,19 @@ void key_released( unsigned char key, int x, int y )
 {
 	switch (key) {
 		case 'w':
-			up = 0;
+
 			break;
 
 		case 'a':
-			left = 0;
+
 			break;
 	
 		case 's':
-			down = 0;
+
 			break;
 	
 		case 'd':
-			right = 0;
+
 			break;
 
 		default:
@@ -218,11 +159,6 @@ void init( void )
 
 	// Set the background color
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
-	player.x = 50.0;
-	player.y = 50.0;
-	player.dx = player.dy = 0;
-	player.vmax = MAX_VELO_PLAYER;
-	player.vmax2 = MAX_VELO_PLAYER * MAX_VELO_PLAYER;
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
