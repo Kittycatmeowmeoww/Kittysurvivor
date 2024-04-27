@@ -133,11 +133,18 @@ void display_func( void )
 	glPushMatrix();
 	glTranslatef(posX, posY, posZ);
 	glBegin(GL_POLYGON);
-	glColor3f(1.0, 0.0, 0.0);
-	glVertex2f(-0.1, -0.2);
+	
+
 	glVertex2f(-0.1, 0.2);
-	glVertex2f(0.1, 0.2);
-	glVertex2f(0.1, -0.2);
+	glVertex2f(0.91, 0.2);
+	glVertex2f(0.91, -0.2);
+	glVertex2f(0.91f, 0.1f);
+	glVertex2f(0.94f, 0.1f);
+	glVertex2f(0.25f, 0.4f);
+	glVertex2f(0.4f, 0.1f);
+
+	glVertex2f(0.4f, 0.1f);
+	glVertex2f(0.2f, 0.6f);
 	glEnd();
 	glPopMatrix();
 	glFlush();
@@ -184,7 +191,7 @@ void init( void )
 	std::cout << "OpenGL Version: " << glGetString( GL_VERSION  ) << "\n\n";
 
 	// Set the background color
-	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
+	glClearColor( 0.4f, 0.9f, 0.4f, 0.0f );
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
