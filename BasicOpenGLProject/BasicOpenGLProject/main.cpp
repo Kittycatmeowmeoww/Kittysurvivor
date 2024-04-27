@@ -13,7 +13,9 @@
 // https://www.opengl.org/resources/libraries/glut/spec3/node45.html
 // http://freeglut.sourceforge.net/docs/api.php#WindowCallback
 //-----------------------------------------------------------------------------
-/* — type definitions —————————————————— */
+/* ï¿½ type definitions ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+float posX = 0, posY = 0;
+float move_unit = 0.1f;
 typedef struct {
 	int width;
 	int height;
@@ -24,14 +26,12 @@ typedef struct {
 	float z_far;
 } glutWindow;
 
-typedef struct Coords {
-	double x, y;
-} Coords;
+
 
 typedef struct {
 	double  x, y, phi, dx, dy, vmax, vmax2, radius;
 } Player;
-/* — function prototypes ————————————————— */
+/* ï¿½ function prototypes ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 static void initialize();
 
@@ -51,7 +51,7 @@ void display();
 void myReshape(int, int);
 
 void setWindowValues();
-/* — global variables —————————————————— */
+/* ï¿½ global variables ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 static glutWindow win;
 
@@ -64,7 +64,6 @@ static int right = 0;
 static double x2;
 static double y2;
 static Player player;
-static Coords coords;
 
 
 void drawPlayer(Player* p) {
@@ -83,6 +82,7 @@ void drawPlayer(Player* p) {
 	glEnd();
 	glPopMatrix();
 }
+
 void idle_func()
 {
 	//uncomment below to repeatedly draw new frames
@@ -101,25 +101,25 @@ void keyboard_func( unsigned char key, int x, int y )
 	{
 		case 'w':
 		{
-			left = 1;
+			posY += move_unit;;
 			break;
 		}
 
 		case 'a':
 		{
-			up = 1;
+			posX -= move_unit;;
 			break;
 		}
 
 		case 's':
 		{
-			right = 1;
+			posY -= move_unit;;
 			break;
 		}
 
 		case 'd':
 		{
-			down = 1;
+			posX += move_unit;;
 			break;
 		}
 
@@ -136,7 +136,30 @@ void keyboard_func( unsigned char key, int x, int y )
 
 void key_released( unsigned char key, int x, int y )
 {
+	switch (key) {
+		case 'w':
+			up = 0;
+			break;
+
+		case 'a':
+			left = 0;
+			break;
+	
+		case 's':
+			down = 0;
+			break;
+	
+		case 'd':
+			right = 0;
+			break;
+
+		default:
+			break;
+		}
+	glutPostRedisplay();
 }
+
+
 
 void key_special_pressed( int key, int x, int y )
 {
@@ -165,11 +188,20 @@ void active_motion_func( int x, int y )
 void display_func( void )
 {
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+	
+	glPushMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(1.0, 0.0, 0.0);
+	glVertex2f(-0.1, -0.2);
+	glVertex2f(-0.1, 0.2);
+	glVertex2f(0.1, 0.2);
+	glVertex2f(0.1, -0.2);
+	glEnd();
+	glPopMatrix();
+	glFlush();
 
 
-	glLoadIdentity();
-	glTranslatef(0.0f, 0.0f, -3.0f);
-	drawPlayer(&player);
+
 	glutSwapBuffers();
 }
 
@@ -191,6 +223,9 @@ void init( void )
 	player.dx = player.dy = 0;
 	player.vmax = MAX_VELO_PLAYER;
 	player.vmax2 = MAX_VELO_PLAYER * MAX_VELO_PLAYER;
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
 	std::cout << "Dont forget to like and subscribe.\n";
 	std::cout << "Kittycat\n";
 	std::cout << "Finished initializing...\n\n";
