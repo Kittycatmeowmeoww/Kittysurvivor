@@ -1,9 +1,6 @@
 #include <GL/freeglut.h>
 #include <iostream>
-#define myTranslate2D(x,y) glTranslated(x, y, 0.0)
-#define myScale2D(x,y) glScalef(x, y, 1.0)
-#define MAX_ACC_PLAYER  0.15
-#define MAX_VELO_PLAYER 2
+
 //=================================================================================================
 // CALLBACKS
 //=================================================================================================
