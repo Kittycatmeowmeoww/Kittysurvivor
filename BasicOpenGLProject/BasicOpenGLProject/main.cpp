@@ -14,7 +14,7 @@
 // http://freeglut.sourceforge.net/docs/api.php#WindowCallback
 //-----------------------------------------------------------------------------
 /* � type definitions ������������������ */
-float posX = 0, posY = 0;
+float posX = 0, posY = 0,posZ=0;
 float move_unit = 0.1f;
 
 
@@ -129,8 +129,9 @@ void active_motion_func( int x, int y )
 void display_func( void )
 {
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-	
+	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
+	glTranslatef(posX, posY, posZ);
 	glBegin(GL_POLYGON);
 	glColor3f(1.0, 0.0, 0.0);
 	glVertex2f(-0.1, -0.2);
@@ -145,6 +146,31 @@ void display_func( void )
 
 	glutSwapBuffers();
 }
+void keyboardown(int key, int x, int y)
+{
+	switch (key) {
+	case GLUT_KEY_RIGHT:
+		posX += move_unit;;
+		break;
+
+	case GLUT_KEY_LEFT:
+		posX -= move_unit;;
+		break;
+
+	case GLUT_KEY_UP:
+		posY += move_unit;;
+		break;
+
+	case GLUT_KEY_DOWN:
+		posY -= move_unit;;
+		break;
+
+	default:
+		break;
+	}
+	glutPostRedisplay();
+}
+
 
 //=================================================================================================
 // INIT
@@ -182,13 +208,13 @@ int main( int argc, char** argv )
 	glutCreateWindow( "i shidded in my pants" );
 
 	glutDisplayFunc( display_func );
-	glutIdleFunc( idle_func );
+	//glutIdleFunc( idle_func );
 
 	glutIgnoreKeyRepeat(1);
 	glutReshapeFunc( reshape_func );
 	glutKeyboardFunc( keyboard_func );
 	glutKeyboardUpFunc( key_released );
-	glutSpecialFunc( key_special_pressed );
+	glutSpecialFunc( keyboardown );
 	glutSpecialUpFunc( key_special_released );
 	glutMouseFunc( mouse_func );
 	glutMotionFunc( active_motion_func );
