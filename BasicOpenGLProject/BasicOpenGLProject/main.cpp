@@ -17,12 +17,31 @@ float move_unit = 0.1f;
 
 
 
+//none moving object speed
+float nonControllablePosX = 0.40f;
+float nonControllablePosY = 0.0f;
+float nonControllableSpeedX = 0.1f;  // Adjust speed as needed
+float nonControllableSpeedY = 0.20f;  // Adjust speed as needed
 
+void updateNonControllableSquare() //postions of the none moving square
+{
+	// Update position based on speed
+	nonControllablePosX += nonControllableSpeedX;
+	nonControllablePosY += nonControllableSpeedY;
+
+	// Example: Reverse direction if square hits boundaries
+	if (nonControllablePosX > 1.0f || nonControllablePosX < -1.0f)
+		nonControllableSpeedX *= -1.0f;
+	if (nonControllablePosY > 1.0f || nonControllablePosY < -1.0f)
+		nonControllableSpeedY *= -1.0f;
+}
 
 
 
 void idle_func()
 {
+	// Update the position of the non-controllable square
+	updateNonControllableSquare();
 	//uncomment below to repeatedly draw new frames
 	glutPostRedisplay();
 }
@@ -123,15 +142,37 @@ void active_motion_func( int x, int y )
 // RENDERING
 //=================================================================================================
 
-void display_func( void )
+
+void display_func( void )// Kat thing
 {
-	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	glTranslatef(posX, posY, posZ);
-	glBegin(GL_POLYGON);
-	
 
+	// Update the position of the non-controllable square
+	updateNonControllableSquare();
+
+	// Draw non-controllable square at its current position
+	glLoadIdentity();  // Reset the modelview matrix
+	glTranslatef(nonControllablePosX, nonControllablePosY, posZ);
+	glColor3f(0.4f, 0.30f, 0.23f);  // Set color for non-controllable square
+	glBegin(GL_POLYGON);
+	glVertex2f(-0.2, 0.2);
+	glVertex2f(0.9, 0.2);
+	glVertex2f(0.9, -0.2);
+	glVertex2f(0.91f, 0.1f);
+	glVertex2f(0.94f, 0.1f);
+	glVertex2f(0.25f, 0.4f);
+	glVertex2f(0.4f, 0.1f);
+	glVertex2f(0.4f, 0.1f);
+	glVertex2f(0.2f, 0.6f);
+	glEnd();
+
+	// Draw controllable square (unchanged)
+	glLoadIdentity();  // Reset the modelview matrix
+	glTranslatef(posX, posY, posZ);
+	glColor3f(1.0f, 0.0f, 0.0f);  // Set color for controllable square
+	glBegin(GL_POLYGON);
 	glVertex2f(-0.1, 0.2);
 	glVertex2f(0.91, 0.2);
 	glVertex2f(0.91, -0.2);
@@ -139,17 +180,20 @@ void display_func( void )
 	glVertex2f(0.94f, 0.1f);
 	glVertex2f(0.25f, 0.4f);
 	glVertex2f(0.4f, 0.1f);
-
 	glVertex2f(0.4f, 0.1f);
 	glVertex2f(0.2f, 0.6f);
 	glEnd();
+
 	glPopMatrix();
 	glFlush();
+
+	glutSwapBuffers();
 
 
 
 	glutSwapBuffers();
 }
+
 void keyboardown(int key, int x, int y)
 {
 	switch (key) {
@@ -223,7 +267,7 @@ int main( int argc, char** argv )
 	glutMouseFunc( mouse_func );
 	glutMotionFunc( active_motion_func );
 	glutPassiveMotionFunc( passive_motion_func );
-
+	glutIdleFunc(idle_func);  // Register idle function to continuously update the scene
 	init();
 
 	glutMainLoop();

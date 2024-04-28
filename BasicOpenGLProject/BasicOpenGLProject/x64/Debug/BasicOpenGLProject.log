@@ -1,1 +1,14 @@
-﻿
+﻿  main.cpp
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(155,19): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(155,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(156,18): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(156,13): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(157,19): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(157,13): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(169,19): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(169,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(170,19): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(170,13): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(171,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\BasicOpenGLProject\main.cpp(171,13): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  BasicOpenGLProject.vcxproj -> C:\Users\wierd\Downloads\Project version 2\BasicOpenGLProject\x64\Debug\BasicOpenGLProject.exe
