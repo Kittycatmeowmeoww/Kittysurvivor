@@ -182,7 +182,7 @@ void renderHUD() {
 	// Rendering HUD elements
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glRasterPos2i(10, glutGet(GLUT_WINDOW_HEIGHT) - 20);
-	std::string hudText = "Health: ";
+	std::string hudText = "Health: work in progress nothing to see here :3 ";
 	for (const char& letter : hudText) {
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
 	}
