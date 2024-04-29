@@ -1,1 +1,1 @@
-"A game based on surving lol" 
+This project is a survival game using OpenGL and the glut libraries. We worked in the Visual Studio for development IDE to compile and run these programs. We used object classes to program the npcs (none playable characters) in our game. For graphics we used open GL in home shapes generators to make the graphics for our NPC’s. And using object oriented programming made the objects move independent and made them have a very primitive AI. 
